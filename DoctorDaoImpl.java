@@ -27,7 +27,7 @@ public List<Doctor> getTodaysAppoinment(String searchString) {
 
 			new RowMapper<Doctor>() {
 
-				public Doctor mapRow(ResultSet rs, int row) throws SQLException {
+				public Doctor mapRow(Result, int row) throws SQLException {
 					Doctor dr = new Doctor();
 					dr.setAppId(rs.getInt(1));
 					dr.setRegId(rs.getInt(2));
