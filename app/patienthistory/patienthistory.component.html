@@ -1,0 +1,188 @@
+<nav class="navigation-bar">
+    <img class="logo" src="assets/logo.jpg">
+   <label style="margin-top:1%;font-size: 30px;"> <strong><b>CITY HOSPITAL</b></strong>
+    </label> 
+    
+        
+        <button type="submit" class="btn btn-primary" style="float: right;margin-top: 1.5%" (click)=logout()>Logout</button>
+    
+    
+</nav>
+<nav class="navbar navbar-light "  style="background-color: rgb(120, 134, 146)">
+    <div style="width: 50%" >
+<button class="btn btn-primary" style="margin-left: 5%;width: 15%" type="submit" (click)=back()>Back</button>
+
+</div>
+
+</nav>
+<div class="container-fluid">
+<div class="container" >
+       
+     <h2 align = "center">Prescription Chart</h2>
+     
+<div class="bg-light text-dark" >
+   <hr style=" border: 1px solid black">
+        <br>
+        
+        <div class="input" style="font-size: 15px; ">
+                <div class="form-row" >
+                        <div class="form-group col-md-6">
+                   
+                       <label for="regid"><b>REGISTRATION ID  :<tr *ngFor ="let a of details">                 
+                        {{a?.regId}}
+                    </tr> </b></label>
+                        
+           
+                     <br>
+                     
+                         <label for="age" ><b>DOB  : <tr *ngFor ="let a of details">                 
+                            {{a?.pDOB}}
+                        </tr></b></label>
+                         
+                     
+                     <br>
+                            <label for="ptname"><b>PATIENT NAME  :<tr *ngFor ="let a of details">                 
+                                {{a?.pFName}}
+                            </tr> </b></label>
+                           
+                   
+                 <br>
+                              <label for="bloodgroup"><b>BLOOD GROUP :<tr *ngFor ="let a of details">                 
+                                {{a?.pBloodGrp}}
+                            </tr> </b></label>
+                              
+                              <button type="button" class = "btn btn-block btn-primary" style=" float: right;margin-right:-100%;margin-top:-10%;width:150px;max-width:200px;" type="submit" (click)="addpresc()">Add Prescription</button>
+
+                       </div>
+                       </div>  
+                 </div>
+                
+                                <button type="button" class = "btn btn-block btn-primary" style=" float: right;margin-right: 1%;margin-top:-15%;width:150px;max-width:200px;" type="submit" (click)="addlab()">Add Lab Test</button>
+                        
+                                <hr style=" border: 1px solid black">
+            </div>
+            
+    
+<div class="container border border-secondary shadow-lg p-3 mb-5 bg-white rounded" style="width:900px;max-width:900px;"> 
+        <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+           
+            <h4 style="text-align:center;">Patient Chart</h4>
+        
+          
+     
+        <hr style=" border: 1px solid black">
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="form-group">
+               <b><label for="comment" >Notes : </label></b> 
+
+                <textarea class="form-control" [(ngModel)]="ObserNotes.obsNotes" name="obsNotes" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                    <button type="button" class = "btn btn-block btn-primary" style="float:right;margin-left:250px; max-width: 150px;margin-top:50px;" (click) = "addNotes()" >Add Notes</button>
+            </div>
+        </div>
+              
+        <hr style=" border: 1px solid black">
+        <div class="row">
+            <div class="col-sm-8">     
+                <div class="container">
+                    <br>
+                    <table class="table table-striped table-bordered table-hover" style="margin-left:-10px; width:550px;margin-bottom:40px; text-align:center;">
+                        <thead class="thead-light">
+                        <tr>
+                         
+                        <th>Observation notes</th> 
+                        <th>Observation Date</th> 
+                        <th>Doctor Name</th> 
+                        </tr>
+                        </thead>
+                        <tbody class="table-striped table-hover">
+                       
+                        <tr *ngFor ="let m of obshistory">
+                                
+                                    
+                        
+                                <td>{{m?.obsNotes}}</td>
+                                <td>{{m?.obserDate}}</td>
+                                <td>{{m?.sName}}</td>
+                             
+                                </tr>
+                                
+                        </tbody>
+                </table>
+             </div>
+            </div>
+            </div>
+        <hr style=" border: 1px solid black">
+        <div class="container border border-secondary shadow-lg p-3 mb-5 bg-white rounded" style="width:850px;max-width:850px;"> 
+              
+                        
+                <hr style=" border: 1px solid black">
+                <div class="row">
+                    <div class="col-sm-8">     
+                        <div class="container">
+                            <br>
+                            <table class="table table-striped table-bordered table-hover" style="margin-left:-10px; width:550px;margin-bottom:40px; text-align:center;">
+                                <thead class="thead-light">
+                                <tr>
+                                  <th>Sl No.</th>
+                                <th>Medicine Name</th> 
+                                <th>Prescription Date</th> 
+                                <th>Doctor Name</th> 
+                                </tr>
+                                </thead>
+                                <tbody class="table-striped table-hover">
+                               
+                                <tr *ngFor ="let m of history">
+                                            
+                                            
+                                        <td>{{m?.prescId}}</td>
+                                        <td>{{m?.medName}}</td>
+                                        <td>{{m?.prescDate}}</td>
+                                        <td>{{m?.sName}}</td>
+                                     
+                                        </tr>
+                                        
+                                </tbody>
+                        </table>
+                     </div>
+                    </div>
+                    
+            </div>
+                    <hr style=" border: 1px solid black">
+                    <div class="row">
+                    <div class="col-sm-8">     
+                    <div class="container">
+                            <br>
+                            <table class="table table-striped table-bordered table-hover" style="margin-left:-10px; width:550px;margin-bottom:40px; text-align:center;">
+                                <thead class="thead-light">
+                                    <tr>
+                                      <th>Sl No.</th> 
+                                    <th>Test Name</th>
+                                    <th>Doctor Name</th> 
+                                    </tr>
+                                </thead>
+                                <tbody class="table-striped table-hover">
+             
+                     
+                                    <tr *ngFor = "let n of labhistory">
+                                            
+                                            
+                                    <td>{{n?.labId}}</td>
+                                    <td>{{n?.lName}}</td>
+                                    <td>{{n?.sName}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                         </div>
+                        </div>
+                       
+                    </div>
+                    </div>
+            <button type="button" class = "btn btn-block btn-primary" style="margin-left:380px; width:150px;max-width:200px;">Submit</button>
+        </div>
+        
+        </div>

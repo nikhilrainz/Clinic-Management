@@ -1,0 +1,130 @@
+<nav class="navigation-bar">
+    <img class="logo" src="assets/logo.jpg">
+   <label style="margin-top:1%;font-size: 30px;"> <strong><b>CITY HOSPITAL</b></strong>
+    </label> 
+    
+        
+        <button type="submit" class="btn btn-primary" style="float: right;margin-top: 1.5%" (click)=logout()>Logout</button>
+    
+    
+</nav>
+<nav class="navbar navbar-light "  style="background-color: rgb(120, 134, 146)">
+    <div style="width: 50%" >
+<button class="btn btn-primary" style="margin-left: 5%;width: 15%" (click)="cancel()">Back</button>
+
+</div>
+
+</nav>
+ <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+ <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+ <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+ 
+ 
+
+     
+     <div class="container-fluid"> 
+        <br>
+         
+             <h1 class="d-flex justify-content-center"><b>Add Medicine Prescription</b></h1>
+         
+            <br>
+            <div  class="bg-light text-dark" style="height:680px; width: 70%;
+        margin-left: 15%;
+        margin-bottom: 10%;
+      
+        height: 60%;
+      
+        border-radius: 8px;
+       ">
+        <br>
+         <div class="container form-inline"  style="font-size: 20px;">
+            <b> <label>Patient ID : </label></b>&nbsp;&nbsp;
+             <tr *ngFor="let patient of disppatients">
+                <b> <td>{{patient.regId}}</td>    </b>   
+       </tr> 
+             
+         </div>
+         <div class="container form-inline"  style="font-size: 20px;">  
+            <b><label>Name : </label></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <tr *ngFor="let patient of disppatients">
+                <b><td>{{patient.pFName}}</td> </b>      
+       </tr>  
+            
+         </div>
+         <div class="container form-inline"  style="font-size: 20px;">
+            <b> <label>DOB: </label></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <tr *ngFor="let patient of disppatients">
+                <b><td>{{patient.pDOB}}</td> </b>      
+       </tr>
+            
+         </div>
+ 
+         
+             <div >
+            
+             <br>
+             <div>
+                 <table class="table table-striped table-hover table-bordered">
+                        <thead style="background-color: rgb(120, 134, 146) ">
+                                <tr style=" border: 3px solid black">
+                                     <th>Lab Test</th>
+                                    
+         
+                                 </tr>
+                                 </thead>
+                                 <br>
+                                 <tr>
+                                     <td>
+                                         <div class="form-group">
+                                             <select class="form-control" [(ngModel)]="labtest.lName" name="lName" >
+                                                 <option *ngFor="let labtest of labtests" [ngValue]="labtest.lName">{{labtest.lName}}</option>
+                   
+                                             </select>
+                                          </div>   
+                                          <button type="button" class="btn btn-success " (click)="savepres()">Save</button> &nbsp;&nbsp;&nbsp;&nbsp;
+                                      </td>
+                                         
+                                        
+                                         
+                                     </tr>
+                         </table>
+             </div>
+             <br>
+             <br>
+             </div>
+           <form role="form" #form="ngForm" autocomplete="off"  (submit)="OnSave1(form)">
+ 
+             <div >
+            
+             <br>
+             <div>
+                 <table class="table table-striped table-hover table-bordered">
+                             
+                                    <thead style="background-color: rgb(120, 134, 146) ">
+                                            <tr style=" border: 3px solid black">
+                             
+                                     <th>Lab Test</th>
+                                    
+                                    
+                                 </tr>
+                                 </thead>
+                                 <br>
+                                 <tr *ngFor="let pdata of prescDets">
+                                     <td>
+                                       {{pdata.lName}}                                    
+                                      </td>
+                                          
+                                         <td><button type="button" class="btn btn-primary " (click)="deletepres(pdata.assignLabId)">Delete</button> </td>
+                                     </tr>
+                         </table>
+             </div>
+             <br>
+             <br>
+             </div>
+             
+           </form>
+           </div> 
+           <br><br>   
+           </div>
+           
+ 

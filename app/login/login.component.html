@@ -1,0 +1,55 @@
+
+	 <script>
+    addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+</script>
+
+
+
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
+<!-- //web font -->
+
+<!-- main -->
+<div class="w3layouts-main"> 
+<div class="bg-layer">
+<h1> Login </h1>
+<div class="header-main">
+  <div class="main-icon">
+    <span class="fa fa-eercast"></span>
+  </div>
+  <div class="header-left-bottom">
+                                    <form role="form" #form="ngForm" autocomplete="off"  (submit)="OnSubmit(form)">
+                                            <div class="icon1">
+                                                        <input name="username" type="text" class="form-control" placeholder="Enter User Name" #username="ngModel" [(ngModel)]="_authservice.formData.username" required>
+                                                       <br> <div class="validation-error" *ngIf="username.invalid && username.touched" style="color: red;font-size: 15px;"><b>*Username is required</b></div>
+                                                    
+                                                    </div>
+                                                    <div class="icon1">     
+                                                            <input name="password" type="password" class="form-control" placeholder="Enter Password" #password="ngModel" [(ngModel)]="_authservice.formData.password" required>
+                                                          <br>  <div class="validation-error" *ngIf="password.invalid && password.touched" style="color: red;font-size: 15px;"><b>*Password is required</b></div>
+                                                   
+                                                    </div>
+                                                    <br>
+
+                                                    <div class="input">
+                                                            <input type="submit" value="Login" [disabled]="form.invalid" class="btn btn-info btn-block">
+                                                           <br> <b><span style="color: blanchedalmond;font-style:Arial Black, Gadget, sans-serif;font-size: 20,l  px;">{{message}}</span></b>
+                                                    </div>
+                                                </form>
+  </div>
+  
+</div>
+
+<!-- copyright -->
+<div class="copyright">
+  <p>© 2019 City Hospital . All rights reserved | Design by Team 2</p>
+</div>
+<!-- //copyright --> 
+</div>
+</div>

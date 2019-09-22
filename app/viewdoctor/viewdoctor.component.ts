@@ -1,0 +1,104 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Admin } from '../admin';
+import { AdminServiceService } from '../admin-service.service';
+
+@Component({
+  selector: 'app-viewdoctor',
+  templateUrl: './viewdoctor.component.html',
+  styleUrls: ['./viewdoctor.component.scss']
+})
+export class ViewdoctorComponent implements OnInit {
+
+  doctors: Admin[];
+  doctor = new Admin();
+  doctorId: number;
+  message: string;
+  searchString: string;
+
+  constructor(private _router:Router, private _adminService: AdminServiceService) { }
+
+  ngOnInit() {
+    this.getAllDoctors();
+  }
+  /***** DASHBOARD HEADERS ********/
+  back():void{
+    this._router.navigate(['admindashboard']);
+  }
+  logout():void{
+    this._router.navigate(['']);
+  }
+  adddoc():void{
+    this._router.navigate(['adddoc']);
+  }
+
+  viewall():void{
+    this.getAllDoctors();
+  }
+
+  /******** CODING STARTS FROM HERE *************/
+  getAllDoctors(): void
+  {
+    this._adminService.getAllDoctors()
+    .subscribe((doctorData) =>{
+      this.doctors = doctorData;
+      console.log(doctorData);
+    }, (error) =>{
+      console.log(error);
+    });
+  }
+
+  searchDoctors(searchString:string){
+    console.log(searchString);
+    this._adminService.searchDoctors(searchString)
+      .subscribe((response)=>{
+        //console.log(response);
+        if(searchString!=null)
+        {
+          console.log(response);
+          if(response.length == 0)
+          {
+            this.message = "Not Found";
+            console.log(this.message);
+            this.searchString = undefined;
+          }
+          else
+          {
+            this.doctors = response
+            console.log(this.doctors);
+            this.searchString = undefined;
+            this.message = undefined;
+          }
+        }
+        else
+        {
+          console.log("hits");
+          this.getAllDoctors();
+        }
+    }
+      , (error)=>{
+        console.log(error);
+        this.message = "Please use Id or Phone"
+          this.searchString = undefined;
+      });
+  }
+
+  editDoctor(sId:number)
+  {
+    console.log("Doctor SID : "+sId);
+    this._router.navigate(['adddoc/'+sId])
+  }
+
+  disableDoctor(dId:number):void{
+    console.log(dId);
+    this._adminService.disableDoctor(dId)
+    .subscribe((response)=>{
+      //console.log(response);
+      this.doctor = response
+      console.log(this.doctor);
+      this.getAllDoctors();
+    }, (error)=>{
+      console.log(error);
+    });
+  }
+}

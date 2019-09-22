@@ -1,0 +1,47 @@
+.panel {
+  
+    transition: box-shadow 0.5s;
+  }
+  .container-fluid{
+    height:auto;
+    min-height:100vh;background-repeat: no-repeat;
+    background-image:url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/SSlwhTBa-j8y43qps/videoblocks-close-up-doctor-typing-on-laptop-unrecognisable-medical-assistant-entering-data-on-computer_heq656awz_thumbnail-full01.png);
+    background-position:center;
+  }
+  .panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+  
+  .row{
+      margin-top:10%;
+  }
+  
+  
+ 
+  .panel-footer h3 {
+    font-size: 32px;
+  }
+  
+  .panel-footer h4 {
+    color: #aaa;
+    font-size: 14px;
+  }
+  
+  .panel-footer .btn {
+    margin: 15px 0;
+    background-color: #1a7cc7;
+    color: #fff;
+  }
+  .navigation-bar {
+    width: 100%;  /* i'm assuming full width */
+    height: 70px; /* change it to desired width */
+    background-color: rgb(255, 255, 255); /* change to desired color */
+}
+.logo {
+    display: inline-block;
+    vertical-align: top;
+    width: 70px;
+    height: 70px;
+    margin-right: 20px;
+    /* if you want it vertically middle of the navbar. */
+}

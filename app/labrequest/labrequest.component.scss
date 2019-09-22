@@ -1,0 +1,18 @@
+.container-fluid{
+    
+    background-image:url(https://wallpaperplay.com/walls/full/6/e/1/13983.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;}.navigation-bar {
+    width: 100%;  /* i'm assuming full width */
+    height: 70px; /* change it to desired width */
+    background-color: rgb(255, 255, 255); /* change to desired color */
+}
+.logo {
+    display: inline-block;
+    vertical-align: top;
+    width: 70px;
+    height: 70px;
+    margin-right: 20px;
+    /* if you want it vertically middle of the navbar. */
+}

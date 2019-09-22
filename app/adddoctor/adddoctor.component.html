@@ -1,0 +1,142 @@
+<nav class="navigation-bar">
+    <img class="logo" src="assets/logo.jpg">
+   <label style="margin-top:1%;font-size: 30px;"> <strong><b>CITY HOSPITAL</b></strong>
+    </label> 
+    
+        
+        <button type="submit" class="btn btn-primary" style="float: right;margin-top: 1.5%" (click)=logout()>Logout</button>
+    
+    
+</nav>
+<nav class="navbar navbar-light "  style="background-color: rgb(120, 134, 146)">
+        <div style="width: 50%" >
+    <button class="btn btn-primary" style="margin-left: 5%;width: 10%" type="submit" (click)=back()>Back</button>
+    
+    </div>
+    
+    </nav>
+ <div style="background-image:
+    url(https://wallpaperplay.com/walls/full/6/e/1/13983.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;">
+    
+
+ 
+
+<br>
+<b><label style="margin-left: 40%;font-size:40px;"> Add / Edit Doctor</label></b>
+<br>
+<form autocomplete="off">
+<div class="container" style="background-color: cornflowerblue" >
+   
+<div class="form-group" >
+        <input type = "hidden" name="doctor.sid" class="form-control"/>
+    </div>
+    
+    <div class="form-group">
+        <strong><label for="title">Full Name</label></strong>
+        <input type="text" [(ngModel)]="doctor.sName"  class="form-control" name="doctor.sName" placeholder="Enter Full Name" required>
+    </div>
+        
+    <div class="form-group">
+        <strong><label for="author">UserName</label></strong>
+        <input type="text" [(ngModel)]="doctor.username"  class="form-control" name="doctor.username" placeholder="Enter UserName">
+    </div>
+
+    <div class="form-group">
+        <strong><label for="author">Password</label></strong>
+            <input type="password" [(ngModel)]="doctor.password"  class="form-control" name="doctor.password" placeholder="Enter Password">
+        </div>
+            
+    
+        <div class="form-group">
+            <strong><label for="author">Confirm Password</label></strong>
+                <input type="password" [(ngModel)]="confirmpassword"  class="form-control" name="confirmpassword" placeholder="Confirm Password">
+                </div>
+    <label><strong>Gender</strong></label><br>
+        <div class="form-group">
+            <select class="form-control text_length" [(ngModel)]="doctor.sGender" name="doctor.sGender">
+                <option disabled>Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+        </div><br/>
+                  <div class="form-group">
+                    <strong> <label for="example-datetime-local-input">DOB </label></strong>
+                  <br> 
+                        <input class="form-control" [(ngModel)]="doctor.sDOB" type="date" name="doctor.sDOB">
+                   
+                </div>          
+    <div class="form-group">
+                    <strong><label for="author">Address</label></strong>
+                       <!-- <input [(ngModel)]="book.author"  class="form-control" id="author" placeholder="Address">-->
+    <textarea class="form-control" [(ngModel)]="doctor.sAddr" name="doctor.sAddr" placeholder="Enter your Address"></textarea>
+                    </div>
+    <div class="form-group">
+            <strong><label for="author">Mobile</label></strong>
+                <input type="text" [(ngModel)]="doctor.sPhNo"  class="form-control" name="doctor.sPhNo" placeholder="Enter Mobile Number">
+            </div>
+            
+            
+           
+    <div class="form-group">
+                    <strong><label for="author">Email</label></strong>
+                        <input type="text" [(ngModel)]="doctor.sEmail" name="doctor.sEmail"  class="form-control" id="author" placeholder="Enter Email Id">
+                    </div>
+    <div class="form-group">
+
+                    <strong><label for="author">Qualification</label></strong>
+                        <input type="text" [(ngModel)]="doctor.dQualification" name= "doctor.dQualification" class="form-control" id="author" placeholder="Enter Qualification">
+                     </div>
+                    
+            
+           
+     <div class="form-group">
+                <strong><label for="author">Experience</label></strong>
+                               <input type="text" [(ngModel)]="doctor.sExp" name="doctor.sExp" class="form-control" id="author" placeholder="Enter Experience">
+                               </div>
+     <div class="form-group">
+                <strong><label for="author">Specialization</label></strong>
+                            <input type="text" [(ngModel)]="doctor.dSpec" name="doctor.dSpec" class="form-control" id="author" placeholder="Enter Specialization">
+                                     </div>
+
+     <div class="form-group">
+                <strong><label for="author">Consultation Fee</label></strong>
+                            <input type="text" [(ngModel)]="doctor.consultFee" name = "doctor.consultFee" class="form-control" id="author" placeholder="Enter consultation fee">                </div>
+        
+        <strong>Consultation Days</strong><br>
+        <form name="myForm" ng-controller="ExampleController">
+                <label>Mon:
+              <input type="checkbox" [(ngModel)]="doctor.monday" name="doctor.monday">
+              </label>&nbsp;
+              <label>Tue:
+               <input type="checkbox" [(ngModel)]="doctor.tuesday" name="doctor.tuesday">
+                </label>&nbsp;
+                <label>Wed:
+                <input type="checkbox" [(ngModel)]="doctor.wednesday" name="doctor.wednesday">
+                </label>&nbsp;
+                <label>Thu:
+                        <input type="checkbox" [(ngModel)]="doctor.thursday" name="doctor.thursday">
+                        </label>&nbsp;
+                        <label>Fri:
+                                <input type="checkbox" [(ngModel)]="doctor.friday" name="doctor.friday">
+                                </label>&nbsp;
+                                <label>Sat:
+                                        <input type="checkbox" [(ngModel)]="doctor.saturday" name="doctor.saturday">
+                                        </label>&nbsp;
+                                        <label>Sun:
+                                                <input type="checkbox" [(ngModel)]="doctor.sunday" name="doctor.sunday">
+                                                </label><br/>
+                            </form>
+                            <span style="color:red;margin-left: 38%;font-size: 14pt;"><strong>{{errMessage}}</strong></span>
+                            
+    <div class="input">
+        <button  (click)="checkPassword()" style="margin-left: 25%;width:50%" type="submit" class="btn btn-success">Save</button>
+    </div>
+</div>
+</form>
+
+<br><br>
+</div>
