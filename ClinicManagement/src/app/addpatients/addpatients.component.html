@@ -1,0 +1,121 @@
+<nav class="navigation-bar">
+    <img class="logo" src="assets/logo.jpg">
+    <label style="margin-top:1%;font-size: 30px;"> <strong><b>CITY HOSPITAL</b></strong>
+    </label>
+
+
+    <button type="submit" class="btn btn-primary" style="float: right;margin-top: 1.5%" (click)=logout()>Logout</button>
+
+
+</nav>
+<nav class="navbar navbar-light" style="background-color: rgb(120, 134, 146)">
+    <div style="width: 50%">
+        <button class="btn btn-primary" style="margin-left: 5%;width: 10%" type="submit" (click)=back()>Back</button>
+
+    </div>
+
+</nav>
+<div style="background-image:
+    url(https://wallpaperplay.com/walls/full/6/e/1/13983.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;">
+
+
+    <br>
+    <b><label style="margin-left: 37%;font-size:40px;"> Add / Edit Patient</label></b>
+    <br><br>
+    <div class="container">
+        <form autocomplete="off" required="required">
+            <div class="form-group">
+                <input type="hidden" name="patient.regId" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <strong><label for="title">First Name</label></strong>
+                <input type="text" [(ngModel)]="patient.pFName" name="pFName" class="form-control" #pFName="ngModel"
+                    id="title" placeholder="Enter First Name" pattern=[a-zA-Z]{2,} required />
+                <div class="validation-error" *ngIf="pFName.invalid && pFName.touched" style="color: red">*Patient First
+                    name is required (min letters=2)</div>
+            </div>
+            <div class="form-group">
+                <strong><label for="title">Last Name</label></strong>
+                <input type="text" [(ngModel)]="patient.pLName" name="pLName" class="form-control" #pLName="ngModel"
+                    id="title" placeholder="Enter Last Name" pattern=[a-zA-Z]{1,} maxlength="15" required />
+                <div class="validation-error" *ngIf="pLName.invalid && pLName.touched" style="color: red">Patient Last
+                    name is required</div>
+
+            </div>
+            <div class="form-group">
+                <strong><label for="author">Address</label></strong>
+                <textarea class="form-control" [(ngModel)]="patient.pAddr" name="pAddr" #pAddr="ngModel"
+                    placeholder="Address" id="title"></textarea>
+                <div class="validation-error" *ngIf="pAddr.invalid && pAddr.touched" style="color: black">Adrress is
+                    required</div>
+
+
+            </div>
+            <div>
+                <label><strong>Gender</strong><br>
+                    <input type="radio" [(ngModel)]="patient.pGender" value="Male" name="gender">
+                    Male
+                </label>&nbsp;
+                <label>
+                    <input type="radio" [(ngModel)]="patient.pGender" value="female" name="gender">
+                    Female
+                </label><br />
+            </div>
+            <div class="form-group">
+                <strong><label for="example-datetime-local-input">DOB</label></strong>
+                <input class="form-control" [(ngModel)]="patient.pDOB" #pDOB="ngModel" name="pDOB" type="date" value=""
+                    id="" required />
+                <div class="validation-error" *ngIf="pDOB.invalid && pDOB.touched" style="color: red">*Patient DOB is
+                    required</div>
+
+            </div>
+            <div class="form-group">
+                <strong><label for="author">Mobile</label></strong>
+                <input type="text" [(ngModel)]="patient.pPhNo" #pPhNo="ngModel" name="pPhNo" class="form-control"
+                    id="author" placeholder="Enter Mobile Number With country code(+91)" pattern="[0-9]{10}" required>
+                <div class="validation-error" *ngIf="pPhNo.invalid && pPhNo.touched" style="color: red">*Patient phone
+                    number is required</div>
+
+            </div>
+
+            <strong>Blood Group</strong><br>
+            <div class="form-group">
+
+                <select name="users" [(ngModel)]="patient.pBloodGrp" class="form-control">
+
+                    <option value="">--Select--</option>
+
+                    <option value="O+">O+</option>
+
+                    <option value="O-">O-</option>
+
+                    <option value="A+">A+</option>
+
+                    <option value="A-">A-</option>
+
+                    <option value="B+">B+</option>
+
+                    <option value="B-">B-</option>
+
+                    <option value="AB+">AB+</option>
+
+                    <option value="AB-">AB-</option>
+                </select>
+            </div>
+
+
+
+
+            <div class="input">
+                <button style="margin-left: 25%;width:50%" type="submit" class="btn btn-success"
+                    (click)="updatePatient()">Save</button>
+            </div>
+        </form>
+        <br>
+    </div>
+    <br><br>
+</div>

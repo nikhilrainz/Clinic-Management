@@ -1,0 +1,60 @@
+<nav class="navigation-bar">
+    <img class="logo" src="assets/logo.jpg">
+    <label style="margin-top:1%;font-size: 30px;"> <strong><b>CITY HOSPITAL</b></strong>
+    </label>
+
+
+    <button type="submit" class="btn btn-primary" style="float: right;margin-top: 1.5%" (click)=logout()>Logout</button>
+
+
+</nav>
+<nav class="navbar navbar-light " style="background-color: rgb(120, 134, 146)">
+    <div style="width: 50%">
+        <button class="btn btn-primary" style="margin-left: 5%;width: 10%" type="submit" (click)=back()>Back</button>
+
+    </div>
+
+</nav>
+
+<div style="background-image:
+    url(https://wallpaperplay.com/walls/full/6/e/1/13983.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;">
+    <div class="container-fluid">
+
+        <br><br>
+        <b><label style="margin-left: 37%;font-size:40px;"> Add / Edit Medicine</label></b>
+        <br>
+        <div class="container" style="background-color: cornflowerblue">
+
+            <div class="form-group">
+                <input type="hidden" name="medicine.medId" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <strong><label for="title">Medicine Name</label></strong>
+                <input type="text" [(ngModel)]="medicine.medName" class="form-control" name="medName"
+                    placeholder="Enter Medicine Name">
+            </div>
+
+            <div class="form-group">
+                <strong><label for="author">Company Name</label></strong>
+                <input type="text" [(ngModel)]="medicine.manufacturer" class="form-control" name="manufacturer"
+                    placeholder="Enter Company Name">
+            </div>
+
+            <div class="form-group">
+                <strong><label for="author">Unit Cost</label></strong>
+                <input type="text" [(ngModel)]="medicine.medPrice" class="form-control" name="medPrice"
+                    placeholder="Enter Unit Cost">
+            </div>
+
+            <div class="input">
+                <button style="margin-left: 25%;width:50%" type="submit" class="btn btn-success"
+                    (click)=save()>Save</button>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>

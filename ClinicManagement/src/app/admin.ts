@@ -1,0 +1,39 @@
+export class Admin
+{
+    public roleId: number;
+	public roleName: string;
+	public dId: number;
+	public sId: number;
+	public dSpec: string;
+	public dQualification: string;
+	public consultFee: DoubleRange;
+	public medId: number;
+	public medName: string;
+	public medPrice: DoubleRange;
+	public manufacturer: string;
+	public sName: string;
+	public sDOB: Date;
+	public sGender: string;
+    public sAddr: string;
+	public sExp: string;
+	public sPhNo: string;
+	public sEmail: string;
+	public username: string;
+	public password: string;
+	public isActiveS: string;
+	public isActiveM: number;
+	public createdDateS: Date;
+	public createdDateM: Date;
+	public labId: number;
+	public lName: string;	
+	public lFee: DoubleRange;
+    public description: string;
+     consultDayId: number;
+		 sunday: String ;
+		 monday: String ;
+		 tuesday: String ;
+		 wednesday: String ;
+		 thursday: String ;
+		 friday: String ;
+		 saturday: String ;
+}

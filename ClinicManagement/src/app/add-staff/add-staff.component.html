@@ -1,0 +1,153 @@
+<nav class="navigation-bar">
+    <img class="logo" src="assets/logo.jpg">
+    <label style="margin-top:1%;font-size: 30px;"> <strong><b>CITY HOSPITAL</b></strong>
+    </label>
+
+
+    <button type="submit" class="btn btn-primary" style="float: right;margin-top: 1.5%" (click)=logout()>Logout</button>
+
+
+</nav>
+<nav class="navbar navbar-light " style="background-color: rgb(120, 134, 146)">
+    <div style="width: 50%">
+        <button class="btn btn-primary" style="margin-left: 5%;width: 10%" type="submit" (click)=back()>Back</button>
+
+    </div>
+
+</nav>
+
+<div style="background-image:
+    url(https://wallpaperplay.com/walls/full/6/e/1/13983.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;">
+
+
+    <b><label style="margin-left: 40%;font-size:40px;">Add/Edit Staff</label></b>
+    <br>
+    <form autocomplete="off" required="required">
+
+        <div class="container" style="background-color: cornflowerblue">
+
+            <div class="form-group">
+                <input type="hidden" [(ngModel)]="staff.sId" name="staff.sId" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <strong><label for="sName">Full Name*</label></strong>
+                <input type="text" [(ngModel)]="staff.sName" class="form-control" #staffname="ngModel" name="sName"
+                    placeholder="Enter Full Name" [(ngModel)]="staff.sName" pattern="[a-zA-Z]{3,}" required />
+                <div class="validation-error" *ngIf="staffname.invalid && staffname.touched" style="color: red">
+                    *StaffName is required with min length 3
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <strong><label for="userName">UserName*</label></strong>
+                <input type="text" [(ngModel)]="staff.username" class="form-control" #staffuname="ngModel"
+                    name="username" placeholder="Enter UserName" [(ngModel)]="staff.username" minlength="4" required />
+                <div class="validation-error" *ngIf="staffuname.invalid && staffuname.touched" style="color: red">
+                    *Username is required with min length 4
+                </div>
+            </div>
+
+            <div class="form-group">
+                <strong><label for="password">Password</label></strong>
+                <input type="password" [(ngModel)]="staff.password" class="form-control" #staffPwd="ngModel"
+                    name="password" placeholder="Enter Password" [(ngModel)]="staff.password" minlength="4" required />
+                <div class="validation-error" *ngIf="staffPwd.invalid && staffPwd.touched" style="color: red">*Password
+                    is required with min length 4
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <strong><label for="author">Confirm Password</label></strong>
+                <input type="password" [(ngModel)]="confirmpassword" class="form-control" #staffCPwd="ngModel"
+                    name="confirmpassword" placeholder="Confirm Password" minlength="4" required>
+                <div class="validation-error" *ngIf="staffCPwd.invalid && staffCPwd.touched" style="color: red">
+                    *Password is required with min length 4
+                </div>
+            </div>
+            <label><strong>Gender</strong></label><br>
+            <div class="form-group">
+                <select class="form-control text_length" [(ngModel)]="staff.sGender" name="sGender"
+                    #staffgender="ngModel" required>
+                    <div class="validation-error" *ngIf="staffgender.invalid && staffgender.touched" style="color: red">
+                        *Please select your gender
+                    </div>
+                    <option disabled>Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </div><br />
+            <div class="form-group">
+                <strong> <label for="example-datetime-local-input">DOB </label></strong>
+                <br>
+                <input class="form-control" [(ngModel)]="staff.sDOB" #staffdob="ngModel" required type="date"
+                    name="sDOB">
+                <div class="validation-error" *ngIf="staffdob.invalid && staffdob.touched" style="color: red">*Please
+                    select your dob
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <strong><label for="address">Address</label></strong>
+
+                <textarea class="form-control" [(ngModel)]="staff.sAddr" name="sAddr" #staffaddr="ngModel"
+                    placeholder="Enter your Address" rows="2" required></textarea>
+                <div class="validation-error" *ngIf="staffaddr.invalid && staffaddr.touched" style="color: red">*Please
+                    enter your address
+                </div>
+            </div>
+            <div class="form-group">
+                <strong><label for="author">Mobile</label></strong>
+                <input type="text" [(ngModel)]="staff.sPhNo" class="form-control" #staffmob="ngModel" name="sPhNo"
+                    placeholder="Enter Mobile Number" required pattern="\+\d{2}[0-9]{10}/">
+                <div class="validation-error" *ngIf="staffmob.invalid && staffmob.touched" style="color: red">*enter
+                    your number with country code(+91)
+                </div>
+            </div>
+            <div>
+                <label><strong>Role</strong></label><br>
+                <select class="form-control text_length" [(ngModel)]="staff.roleName" name="roleName"
+                    #staffrole="ngModel" placeholder="enter role" required>
+                    <option disabled>Select Role</option>
+                    <ng-container *ngFor="let role of roles">
+                        <option *ngIf="role.roleName!='Admin'&& role.roleName!='Doctor'" [(ngValue)]="role.roleName">
+                            {{role.roleName}}</option>
+                    </ng-container>
+                </select>
+            </div>
+            <div class="form-group">
+                <strong><label for="sExp">Experience</label></strong>
+                <input type="text" [(ngModel)]="staff.sExp" class="form-control" id="sExp"
+                    placeholder="Enter Experience">
+            </div>
+            <div class="form-group" [class.has-error]="sEmail.invalid && sEmail.touched">
+                <strong><label for="sEmail">Email</label></strong>
+                <input type="email" [(ngModel)]="staff.sEmail" class="form-control" name="sEmail"
+                    placeholder="Enter Email Id" id="sEmail" #sEmail="ngModel" required
+                    pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+                <span class="help-block" *ngIf="sEmail.errors?.required && sEmail.touched">
+                    Email is required
+                </span>
+                <span class="help-block" *ngIf="sEmail.errors?.pattern && sEmail.touched">
+                    Email is Invalid
+                </span>
+            </div>
+            <span style="color:red;margin-left: 38%;font-size: 14pt;"><strong>{{errMessage}}</strong></span>
+
+            <div class="input">
+                <button (click)="checkPassword()" style="margin-left: 25%;width:50%" type="submit"
+                    class="btn btn-success" ng-disabled="form.staff.sName.$invalid">Save</button>
+            </div>
+            <br>
+        </div>
+    </form>
+    <br><br>
+</div>

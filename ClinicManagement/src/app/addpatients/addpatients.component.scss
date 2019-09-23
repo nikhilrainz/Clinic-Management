@@ -1,0 +1,33 @@
+
+.container {
+  width: 50%;
+  margin-left: 25%;
+  margin-bottom: 10%;
+
+  height: 50%;
+  border: 3px solid 	#1E90FF;
+  border-radius: 8px;
+  background-color:rgb(108, 172, 247);
+
+}
+
+.container-fluid{
+  height: 100%;
+background-image:
+url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYsNROQ8gSCMNuU9Oq4I5B_GsMmVZ6L5ynO75wv1hp3uQeFHqu);
+background-size: cover;
+background-repeat: no-repeat;
+}
+.navigation-bar {
+  width: 100%;  /* i'm assuming full width */
+  height: 70px; /* change it to desired width */
+  background-color: rgb(255, 255, 255); /* change to desired color */
+}
+.logo {
+  display: inline-block;
+  vertical-align: top;
+  width: 70px;
+  height: 70px;
+  margin-right: 20px;
+  /* if you want it vertically middle of the navbar. */
+}

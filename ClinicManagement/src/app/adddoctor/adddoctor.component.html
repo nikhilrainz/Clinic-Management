@@ -1,0 +1,199 @@
+<nav class="navigation-bar">
+    <img class="logo" src="assets/logo.jpg">
+    <label style="margin-top:1%;font-size: 30px;"> <strong><b>CITY HOSPITAL</b></strong>
+    </label>
+
+
+    <button type="submit" class="btn btn-primary" style="float: right;margin-top: 1.5%" (click)=logout()>Logout</button>
+
+
+</nav>
+<nav class="navbar navbar-light " style="background-color: rgb(120, 134, 146)">
+    <div style="width: 50%">
+        <button class="btn btn-primary" style="margin-left: 5%;width: 10%" type="submit" (click)=back()>Back</button>
+
+    </div>
+
+</nav>
+<div style="background-image:
+        url(https://wallpaperplay.com/walls/full/6/e/1/13983.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 100%;">
+
+
+
+
+    <br>
+    <b><label style="margin-left: 40%;font-size:40px;"> Add / Edit Doctor</label></b>
+    <br>
+    <form autocomplete="off">
+        <div class="container" style="background-color: cornflowerblue">
+
+            <div class="form-group">
+                <input type="hidden" name="doctor.sid" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <strong><label for="fullname">Full Name</label></strong>
+                <input type="text" [(ngModel)]="doctor.sName" class="form-control" id="fullname"
+                    placeholder="Enter Full Name" #doctorname="ngModel" name="sName" pattern="[a-zA-Z]{2,}" required />
+                <div class="validation-error" *ngIf="doctorname.invalid && doctorname.touched" style="color: red">
+                    *DoctorName is required with min length 3
+                </div>
+            </div>
+
+            <div class="form-group">
+                <strong><label for="username">UserName</label></strong>
+                <input type="text" [(ngModel)]="doctor.username" class="form-control" name="username" id="username"
+                    #doctoruname="ngModel" placeholder="Enter UserName" minlength="4" maxlength="8" required />
+
+                <div class="validation-error" *ngIf="doctoruname.invalid && doctoruname.touched" style="color: red">
+                    *Username is required with min length 4 and max length 8
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <strong><label for="password">Password</label></strong>
+                <input type="password" [(ngModel)]="doctor.password" class="form-control" name="password" id="password"
+                    placeholder="Enter Password" #doctorPwd="ngModel" minlength="4" maxlength="8" required />
+                <div class="validation-error" *ngIf="doctorPwd.invalid && doctorPwd.touched" style="color: red">
+                    *Password is required with min length 4 and max length 8
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <strong><label for="confirmpassword">Confirm Password</label></strong>
+                <input type="password" [(ngModel)]="confirmpassword" class="form-control" #doctorCPwd="ngModel"
+                    name="confirmpassword" placeholder="Confirm Password" minlength="4" required />
+                <div class="validation-error" *ngIf="doctorCPwd.invalid && doctorCPwd.touched" style="color: red">
+                    *Password is required with min length 4
+                </div>
+            </div>
+            <label><strong>Gender</strong></label><br>
+            <div class="form-group">
+                <select class="form-control text_length" [(ngModel)]="doctor.sGender" name="sGender"
+                    #doctorgender="ngModel" required>
+                    <div class="validation-error" *ngIf="doctorgender.invalid && doctorgender.touched"
+                        style="color: red">*Please select your gender
+                    </div>
+                    <option value="0" disabled>Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </div><br />
+            <div class="form-group">
+                <strong> <label for="example-datetime-local-input">DOB </label></strong>
+                <br>
+                <input class="form-control" [(ngModel)]="doctor.sDOB" type="date" value="" id="" #doctordob="ngModel"
+                    required name="sDOB">
+                <div class="validation-error" *ngIf="doctordob.invalid && doctordob.touched" style="color: red">*Please
+                    select your dob
+                </div>
+            </div>
+
+            <div class="form-group">
+                <textarea class="form-control" [(ngModel)]="doctor.sAddr" placeholder="Enter your Address" required
+                    name="sAddr" #address="ngModel" required></textarea>
+                <div class="validation-error" *ngIf="address.invalid && address.touched" style="color: red">*Please
+                    select your address
+                </div>
+            </div>
+            <div class="form-group">
+                <strong><label for="mobile">Mobile</label></strong>
+                <input type="text" [(ngModel)]="doctor.sPhNo" class="form-control" id="mobile"
+                    placeholder="Enter Mobile Number with countrycode(91)" #doctormob="ngModel" name="sPhNo" required
+                    pattern="[0-9]{13}" minlength="10" maxlength="12">
+            </div>
+
+            <div class="form-group">
+                <strong><label for="email">Email</label></strong>
+                <input type="text" [(ngModel)]="doctor.sEmail" class="form-control" name="sEmail"
+                    placeholder="Enter Email Id" id="sEmail" #dEmail="ngModel" required
+                    pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+                <span class="help-block" *ngIf="dEmail.errors?.required && dEmail.touched" style="color: red">
+                    Email is required
+                </span>
+                <span class="help-block" *ngIf="dEmail.errors?.pattern && dEmail.touched" style="color: red">
+                    Email is Invalid
+                </span>
+
+            </div>
+            <div class="form-group">
+
+                <strong><label for="Qualification">Qualification</label></strong>
+                <input type="text" [(ngModel)]="doctor.dQualification" class="form-control" id="Qualification"
+                    name="dQualification" placeholder="Enter Your Qualification" #dqual="ngModel" pattern="[a-zA-Z]{2,}"
+                    required>
+                <div class="validation-error" *ngIf="dqual.invalid && dqual.touched" style="color: red">*Qualification
+                    is required
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <strong><label for="Experience">Experience</label></strong>
+                <input type="text" [(ngModel)]="doctor.sExp" class="form-control" id="Experience" name="sExp"
+                    placeholder="Enter Your Experience in number of years" #dExp="ngModel" pattern="[0-9]{1,2}"
+                    required>
+                <div class="validation-error" *ngIf="dExp.invalid && dExp.touched" style="color: red">*Experience is
+                    mandatory
+                </div>
+            </div>
+            <div class="form-group">
+                <strong><label for="Specialization">Specialization</label></strong>
+                <input type="text" [(ngModel)]="doctor.dSpec" class="form-control" id="Specialization" name="dSpec"
+                    placeholder="Enter Your Specialization" #dspecial="ngModel" pattern="[a-zA-Z]{2,}" required>
+                <div class="validation-error" *ngIf="dspecial.invalid && dspecial.touched" style="color: red">
+                    *Specialization is required
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <strong><label for="Consultation Fee">Consultation Fee</label></strong>
+                <input type="text" [(ngModel)]="doctor.consultFee" class="form-control" id="Consultation Fee"
+                    name="cFee" placeholder="Enter consultFee" #dFee="ngModel" pattern="\d{1,6}" required>
+                <div class="validation-error" *ngIf="dFee.invalid && dFee.touched" style="color: red">*consultation fee
+                    is mandatory
+                </div>
+            </div>
+            <strong>Consultation Days</strong><br>
+            <form name="myForm" ng-controller="ExampleController" required>
+                <label>Mon:
+                    <input type="checkbox" [(ngModel)]="doctor.monday" name="doctor.monday">
+                </label>&nbsp;
+                <label>Tue:
+                    <input type="checkbox" [(ngModel)]="doctor.tuesday" name="doctor.tuesday">
+                </label>&nbsp;
+                <label>Wed:
+                    <input type="checkbox" [(ngModel)]="doctor.wednesday" name="doctor.wednesday">
+                </label>&nbsp;
+                <label>Thu:
+                    <input type="checkbox" [(ngModel)]="doctor.thursday" name="doctor.thursday">
+                </label>&nbsp;
+                <label>Fri:
+                    <input type="checkbox" [(ngModel)]="doctor.friday" name="doctor.friday">
+                </label>&nbsp;
+                <label>Sat:
+                    <input type="checkbox" [(ngModel)]="doctor.saturday" name="doctor.saturday">
+                </label>&nbsp;
+                <label>Sun:
+                    <input type="checkbox" [(ngModel)]="doctor.sunday" name="doctor.sunday">
+                </label><br />
+            </form>
+            <span style="color:red;margin-left: 38%;font-size: 14pt;"><strong>{{errMessage}}</strong></span>
+
+            <div class="input">
+                <button (click)="checkPassword()" style="margin-left: 25%;width:50%" type="submit"
+                    class="btn btn-success">Save</button>
+            </div>
+        </div>
+    </form>
+
+    <br><br>
+</div>

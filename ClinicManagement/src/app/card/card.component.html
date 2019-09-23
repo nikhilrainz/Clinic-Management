@@ -1,0 +1,54 @@
+<nav class="navigation-bar">
+  <img class="logo" src="assets/logo.jpg">
+  <label style="margin-top:1%;font-size: 30px;"> <strong><b>CITY HOSPITAL</b></strong>
+  </label>
+  <button type="submit" class="btn btn-primary" style="float: right;margin-top: 1% ;width:200px;"
+    (click)=logout()>Logout</button>
+</nav>
+<div class="container-fluid">
+
+  <br><br>
+  <h1 class="d-flex justify-content-center" style="color: white;"> <strong>ADMIN DASHBOARD</strong></h1>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-default text-center">
+
+
+        <div class="panel-body" style="height:10%">
+          <img src="assets/download.png" alt="Los Angeles">
+        </div>
+        <div class="panel-footer">
+
+
+          <button class="btn btn-lg" style="width:200px" (click)=doctor()>Doctor</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-default text-center">
+
+        <div class="panel-body">
+          <img src="assets/staff.png" alt="Los Angeles">
+        </div>
+        <div class="panel-footer">
+          <button class="btn btn-lg" style="width:200px" (click)=staff()>Staff</button>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-default text-center">
+
+        <div class="panel-body">
+          <img src="assets/med.png" alt="Los Angeles">
+        </div>
+        <div class="panel-footer">
+          <button class="btn btn-lg" style="width:200px" (click)=medicine()>Medicine</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+
+</div>

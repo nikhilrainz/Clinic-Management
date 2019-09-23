@@ -1,0 +1,116 @@
+<nav class="navigation-bar">
+    <img class="logo" src="assets/logo.jpg">
+    <label style="margin-top:1%;font-size: 30px;"> <strong><b>CITY HOSPITAL</b></strong>
+    </label>
+
+
+    <button type="submit" class="btn btn-primary" style="float: right;margin-top: 1.5%" (click)=logout()>Logout</button>
+
+
+</nav>
+<nav class="navbar navbar-light " style="background-color: rgb(120, 134, 146)">
+    <div style="width: 50%">
+        <button class="btn btn-primary" style="margin-left: 5%;width: 15%" (click)="cancel()">Back</button>
+
+    </div>
+
+</nav>
+<div style=" background-image:
+url(https://wallpaperplay.com/walls/full/6/e/1/13983.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+height: 150vh;">
+    <br>
+
+    <h1 class="d-flex justify-content-center">CONSULTATION</h1>
+    <br><br>
+    <div class="container" style="height:680px; width: 70%;
+        margin-left: 15%;
+        margin-bottom: 10%;
+      
+        height: 60%;
+      
+        border-radius: 8px;
+        background-color:cornflowerblue ">
+
+        <form>
+            <div class="form-row" style="font-size: 18px;">
+                <div class="form-group col-md-6">
+                    <label for="example-text-input" class="col-4 col-form-label">Reg Id: {{objpat1.regId}}</label>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="example-text-input" class="col-4 col-form-label">BloodGroup:
+                        {{objpat1.pBloodGrp}}</label>
+                </div>
+            </div>
+            <div class="form-row" style="font-size: 18px;">
+                <div class="form-group col-md-6">
+                    <label for="example-text-input" class="col-4 col-form-label">Patient Name:
+                        {{objpat1.pFName}}</label>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="example-text-input" class="col-4 col-form-label">Phone Number: {{objpat1.pPhNo}}</label>
+                </div>
+            </div>
+            <hr style="  border: 3px solid black;">
+            <br>
+
+            <div class="col-10">
+                <select [(ngModel)]="sName" (change)="getDoctor($event)" style="width: 200px;"
+                    class="form-control text_length" [ngModelOptions]="{standalone: true}">
+                    <option [(ngModel)]="sName" disabled selected>Select Doctor</option>
+
+                    <ng-container *ngFor="let avail of consults">
+                        <option>{{avail.sName}}</option>
+                    </ng-container>
+
+
+                </select>
+
+            </div>
+            <!--<div class="dropdown" style="width: 170px;">
+                   
+                    <select (change)="getDoctor($event.target)"   class="btn btn-outline-primary  my-2 my-sm-0 dropdown-toggle" class="form-control">
+                      <option  disabled selected>Select Doctor</option>
+                      <option *ngFor="let avail of availDoc" >{{avail.sName}}</option>
+                    </select>
+                
+                </div>-->
+            <br>
+            <br>
+            <div class="form-group row">
+                <label for="example-text-input" class="col-2 col-form-label">SPECIALIZATION</label>
+                <div class="col-5">
+                    <input class="form-control" [(ngModel)]="objpat2.dSpec" name="dSpec" type="text" id="" readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="example-text-input" class="col-2 col-form-label">CONSULTATION FEE</label>
+                <div class="col-5">
+                    <input class="form-control" [(ngModel)]="objpat2.consultFee" name="consultFee" type="number" id=""
+                        readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="example-text-input" class="col-2 col-form-label">REGISTRATION FEE</label>
+                <div class="col-5">
+                    <input class="form-control" name="regFee" [(ngModel)]="regFee" type="number" id="">
+                </div>
+            </div>
+            <hr>
+            <div class="form-group row">
+                <label for="example-text-input" class="col-2 col-form-label">TOTAL</label>
+                <div class="col-2">
+                    <input class="form-control" name="admFee" [(ngModel)]="objpat2.admFee"
+                        value="{{regFee + objpat2.consultFee}}" type="number" id="" readonly>
+                </div>
+                <div class="col-5">
+                    <button type="button" class="btn btn-success btn-lg" style="float:right"
+                        (click)="addAppoinment()">GENERATE APPOINTMENT</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>

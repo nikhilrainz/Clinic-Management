@@ -1,0 +1,76 @@
+<nav class="navigation-bar">
+    <img class="logo" src="assets/logo.jpg">
+    <label style="margin-top:1%;font-size: 30px;"> <strong><b>CITY HOSPITAL</b></strong>
+    </label>
+
+
+    <button type="submit" class="btn btn-primary" style="float: right;margin-top: 1.5%" (click)="logout()">Logout</button>
+
+
+</nav>
+<nav class="navbar navbar-light" style="background-color: rgb(120, 134, 146)">
+    <div style="width: 50%">
+        <button class="btn btn-primary" style="margin-left: 5%;width: 20%" type="submit" (click)=view()>View
+            All</button>
+
+        <button class="btn btn-primary" style="margin-left:1%" type="submit" (click)=add()>New Registration</button>
+
+        <button class="btn btn-primary" style="margin-left: 1%;" type="submit" (click)=viewtodays()>Today's
+            Appointment</button>
+    </div>
+
+</nav>
+<div style="height:100%;
+        min-height:100vh;background-repeat: no-repeat;
+        background-image:url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/SSlwhTBa-j8y43qps/videoblocks-close-up-doctor-typing-on-laptop-unrecognisable-medical-assistant-entering-data-on-computer_heq656awz_thumbnail-full01.png);
+        background-position:center;">
+    <br>
+    <h1 style="margin-top:5px" align="center">PATIENT LIST</h1>
+    <br>
+    <form class="form-inline" (submit)="searchPatient(searchString)">
+        <input class="form-control mr-sm-2" [(ngModel)]="searchString" name="pFName" type="search"
+            style="margin-left: 37%;" placeholder="Search by name or phone" aria-label="Search">
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    <br>
+    <span style="color:red;margin-left: 45%;font-size: 14pt;"><strong>{{message}}</strong></span>
+    <div class="container">
+
+        <table class="table table-striped  table-secondary table-hover">
+            <thead>
+                <tr style=" border: 3px solid black">
+
+                    <th style="text-align: center;">Registration Id</th>
+                    <th style="text-align: center;">Patient Name</th>
+                    <th style="text-align: center;">Date Of Birth</th>
+                    <th style="text-align: center;">Mobile No</th>
+                    <th style="text-align: center;">Gender</th>
+                    <th style="text-align: center;">Blood Group</th>
+                    <th style="text-align: center;">Registration Date</th>
+                    <th style="text-align: center;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let patient of patients | paginate:{itemsPerPage:5,currentPage:p}"
+                    style=" border: 3px solid black">
+                    <td style="text-align: center;">{{patient.regId}}</td>
+                    <td style="text-align: center;">{{patient.pFName}}</td>
+                    <td style="text-align: center;">{{patient.pDOB}}</td>
+                    <td style="text-align: center;">{{patient.pPhNo}}</td>
+                    <td style="text-align: center;">{{patient.pGender}}</td>
+                    <td style="text-align: center;">{{patient.pBloodGrp}}</td>
+                    <td style="text-align: center;">{{patient.createdDateP}}</td>
+                    <td><button class="btn btn-primary" style="text-align: center;" type="submit"
+                            (click)=edit(patient.regId)>Edit</button>&nbsp;
+                        <button class="btn btn-success" style="text-align: center;" type="submit"
+                            (click)=consult(patient.regId)>Consult</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <pagination-controls (pageChange)="p =$event"></pagination-controls>
+
+    </div>

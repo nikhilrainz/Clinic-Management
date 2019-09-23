@@ -1,0 +1,162 @@
+<nav class="navigation-bar">
+    <img class="logo" src="assets/logo.jpg">
+    <label style="margin-top:1%;font-size: 30px;"> <strong><b>CITY HOSPITAL</b></strong>
+    </label>
+
+
+    <button type="submit" class="btn btn-primary" style="float: right;margin-top: 1.5%" (click)="logout()">Logout</button>
+
+
+</nav>
+<nav class="navbar navbar-light " style="background-color: rgb(120, 134, 146)">
+    <div style="width: 50%">
+        <button class="btn btn-primary" style="margin-left: 5%;width: 15%" (click)="back()">Back</button>
+
+    </div>
+
+</nav>
+<div class="container-fluid">
+    <br>
+
+    <div class="container">
+
+        <b><label style="margin-left: 35%;font-size:40px;">Medicine Request</label></b>
+
+        <form role="form" #form="ngForm" autocomplete="off" (submit)="OnSave(form)">
+            <div class="bg-light text-dark">
+
+                <br>
+                <div class="input" style="font-size: 15px; ">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="regid"><b>REGISTRATION ID :<tr *ngFor="let a of details">
+                                        {{a?.regId}}
+                                    </tr> </b></label>
+                        </div>
+                        <br>
+                        <div class="form-group col-md-6">
+                            <label for="age"><b>DOB : <tr *ngFor="let a of details">
+                                        {{a?.pDOB}}
+                                    </tr></b></label>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="ptname"><b>PATIENT NAME :<tr *ngFor="let a of details">
+                                        {{a?.pFName}}
+                                    </tr> </b></label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="bloodgroup"><b>BLOOD GROUP :<tr *ngFor="let a of details">
+                                        {{a?.pBloodGrp}}
+                                    </tr> </b></label>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+                    <table class="table">
+                        <thead style="background-color: rgb(120, 134, 146) ">
+                            <tr style=" border: 3px solid black">
+                                <th>Medicine</th>
+
+                                <th>Days</th>
+                                <th>Frequency Of Dosage</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <br>
+
+                        <tr>
+                            <td>
+
+                                <div>
+
+                                    <!-- <select name="medicineName" ng-model="userSelect" class="btn btn-secondary dropdown-toggle"> -->
+
+                                    <div class="form-group">
+                                        <select class="form-control" [(ngModel)]="medicine.medName" name="medName">
+                                            <option disabled>Select Medicine</option>
+                                            <option *ngFor="let medicine of medicines" [ngValue]="medicine.medName">
+                                                {{medicine.medName}}</option>
+
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                            </td>
+                            <td><input type="text" [(ngModel)]="medicine.medDays" name="medDays" /></td>
+
+                            <td>
+                                <div class="form-group">
+
+                                    <select name="medFreq" [(ngModel)]="medicine.medFreq" class="form-control">
+
+                                        <option disabled>Select Frequency</option>
+
+                                        <option value="1-0-0">1-0-0</option>
+
+                                        <option value="1-1-0">1-1-0</option>
+
+                                        <option value="1-0-1">1-0-1</option>
+
+                                        <option value="1-1-1">1-1-1</option>
+
+                                        <option value="0-1-1">0-1-1</option>
+
+                                        <option value="0-0-1">0-0-1</option>
+
+                                        <option value="0-1-0">0-1-0</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td><button type="button" class="btn btn-success" (click)="savepres()">Add</button> </td>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+                <br>
+            </div>
+
+            <br>
+            <div>
+
+                <br>
+
+                <div class="bg-light text-dark">
+                    <table class="table">
+                        <thead style="background-color: rgb(120, 134, 146) ">
+                            <tr style=" border: 3px solid black">
+
+                                <th>Medicine</th>
+                                <th>Days</th>
+                                <th>Frequency Of Dosage</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <br>
+                        <tr *ngFor="let pdata of prescDets">
+                            <td>
+                                {{pdata.medName}}
+                            </td>
+                            <td>{{pdata.medDays}}</td>
+                            <td>{{pdata.medFreq}}</td>
+                            <td><button type="button" class="btn btn-primary "
+                                    (click)="deletePres(pdata.prescId)">Delete</button> </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+    <br>
+    <button type="button" class="btn btn-success" style="margin-left: 40%;width: 20%" (click)="save()">Save</button>
+    <br>
+    <br>
+</div>

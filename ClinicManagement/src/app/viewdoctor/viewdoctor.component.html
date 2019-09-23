@@ -1,0 +1,67 @@
+<nav class="navigation-bar">
+    <img class="logo" src="assets/logo.jpg">
+    <label style="margin-top:1%;font-size: 30px;"> <strong><b>CITY HOSPITAL</b></strong>
+    </label>
+
+
+    <button type="submit" class="btn btn-primary" style="float: right;margin-top: 1.5%" (click)="logout()">Logout</button>
+
+
+</nav>
+
+<nav class="navbar navbar-light" style="background-color: rgb(120, 134, 146)">
+    <div style="width: 50%">
+        <button class="btn btn-primary" style="margin-left: 5%;width: 10%" type="submit" (click)=back()>Back</button>
+
+        <button class="btn btn-primary" style="margin-left:1%" type="submit" (click)=adddoc()>Add New Doctor</button>
+
+        <button class="btn btn-primary" style="margin-left:1%" type="submit" (click)=viewall()>View All</button>
+    </div>
+
+</nav>
+<div style="height:100%;
+    min-height:100vh;background-repeat: no-repeat;
+    background-image:url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/SSlwhTBa-j8y43qps/videoblocks-close-up-doctor-typing-on-laptop-unrecognisable-medical-assistant-entering-data-on-computer_heq656awz_thumbnail-full01.png);
+    background-position:center;">
+    <div class="container-fluid">
+        <br>
+        <h1 style="margin-top:5px" align="center">DOCTORS LIST</h1>
+        <br>
+        <form class="form-inline" (submit)="searchDoctors(searchString)">
+            <input class="form-control mr-sm-2" [(ngModel)]="searchString" name=searchString type="search"
+                style="margin-left: 40%;" placeholder="Search by Id or Phone" aria-label="Search">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <span style="color:red;margin-left: 45%;font-size: 14pt;"><strong>{{message}}</strong></span>
+        <br>
+        <div class="container">
+            <table class="table table-striped  table-secondary table-hover " style="width: 100%">
+                <thead>
+                    <tr style=" border: 3px solid rgb(0, 0, 0)">
+                        <th style="text-align: center;">Doctor Staff ID</th>
+                        <th>Doctor Name</th>
+                        <th>Specialization</th>
+                        <th>Mobile</th>
+                        <th style="text-align: center;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let doctor of doctors | paginate:{itemsPerPage:5,currentPage:p}"
+                        style=" border: 3px solid black">
+                        <td style="text-align: center;">{{doctor.sId}}</td>
+                        <td>{{doctor.sName}}</td>
+                        <td>{{doctor.dSpec}}</td>
+                        <td>{{doctor.sPhNo}}</td>
+                        <td style="text-align: center"><button class="btn btn-primary" type="submit"
+                                (click)="editDoctor(doctor.sId)">Edit</button>&nbsp;
+                            <button class="btn btn-danger" type="submit"
+                                (click)="disableDoctor(doctor.dId)">Disable</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <pagination-controls (pageChange)="p =$event"></pagination-controls>
+        </div>
+    </div>
